@@ -34,10 +34,12 @@ var signInButton = document.getElementById('sign-in-button');
 var splashPage = document.getElementById('page-splash');
 var addInscription = document.getElementById('add-inscription');
 var sectionInfo = document.getElementById('section-Info');
+var sectionIntro = document.getElementById('section-intro');
 var sectionConfirmation = document.getElementById('section-Confirmation');
 var containerConfirmation = document.getElementById('container-confirmation');
 var myInscriptionButton = document.getElementById('menu-mon-inscription');
 var menuInfoButton = document.getElementById('menu-info');
+var menuIntroButton = document.getElementById('menu-intro');
 var navBar = document.getElementById('nav-bar');
 var headerBar = document.getElementById('header-bar');
 var containerConfirmationColor = document.getElementById('container-confirmation-color');
@@ -254,11 +256,15 @@ function newInscriptionForCurrentUser(firstname, lastname, gender, email, pizzaQ
  * Displays the given section element and changes styling of the given button.
  */
 function showSection(sectionElement, buttonElement) {
+  
   sectionInfo.style.display = 'none';
+  sectionIntro.style.display = 'none';
   addInscription.style.display = 'none';
   sectionConfirmation.style.display = 'none';
+
   myInscriptionButton.classList.remove('is-active');
   menuInfoButton.classList.remove('is-active');
+  menuIntroButton.classList.remove('is-active');
 
   if (sectionElement) {
     sectionElement.style.display = 'block';
@@ -327,6 +333,9 @@ inscriptionForm.onsubmit = function(e) {
 };
 
 // Bind menu buttons.
+menuIntroButton.onclick = function() {
+  showSection(sectionIntro, menuIntroButton);
+};
 myInscriptionButton.onclick = function() {
   showSection(addInscription, myInscriptionButton);
 };
