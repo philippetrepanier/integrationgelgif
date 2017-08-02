@@ -469,3 +469,16 @@ h3 {
 .text-justifie {
   text-align: justify;
 }
+
+/* Tableau responsive*/
+.mdl-data-table {
+    table-layout:fixed;
+    width:100%; 
+}
+#section-arsenal td, th {
+  width: 100%;
+  white-space: nowrap;
+  overflow: auto;
+  /*text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;*/
+}
