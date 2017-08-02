@@ -459,3 +459,13 @@ h3 {
 .mdl-select__expandable-holder .mdl-select__label:after {
   bottom: 0;
 }
+
+/*fix checkbox line*/
+.mdl-checkbox {
+  height: 100%;
+}
+
+/* Texte justifié*/
+.text-justifie {
+  text-align: justify;
+}

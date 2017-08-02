@@ -64,15 +64,24 @@
   <header class="header mdl-layout__header mdl-color-text--white mdl-color--deep-purple" id="header-bar">
 
     <div class="mdl-layout__header-row titlebar">
-      <h3 class="logo">Inscription - Integration GEL-GIF</h3>
+      <span class="mdl-layout-title"><h3 class="logo">Inscription - Integration GEL-GIF</h3></span>
       <!--<button id="sign-out-button" class="mdl-button--raised mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons">account_circle</i> Sign out</button>-->
     </div>
 
     <!-- Navigation Bar -->
-    <div class="tab mdl-layout__header-row mdl-color--pink" id="nav-bar">
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--pink" id="nav-bar">
       <div class="mdl-tab">
         <div id="menu-info" class="mdl-layout__tab is-active mdl-button mdl-js-button mdl-js-ripple-effect">
           <i class="material-icons">info</i> Informations
+        </div>
+        <div id="menu-horaire" class="mdl-layout__tab mdl-button mdl-js-button mdl-js-ripple-effect">
+          Horaire
+        </div>
+        <div id="menu-costume" class="mdl-layout__tab mdl-button mdl-js-button mdl-js-ripple-effect">
+          Costume
+        </div>
+        <div id="menu-arsenal" class="mdl-layout__tab mdl-button mdl-js-button mdl-js-ripple-effect">
+          Arsenal
         </div>
         <div id="menu-mon-inscription" class="mdl-layout__tab mdl-button mdl-js-button mdl-js-ripple-effect">
           <i class="material-icons">home</i> Mon Inscription
@@ -93,6 +102,10 @@
             <div class="mdl-card__title mdl-color--pink-A200 mdl-color-text--white">
               <h2 class="mdl-card__title-text">Informations de base</h2>
             </div>
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600 text-justifie">
+               Voici notre doux formulaire d'inscription pour cette semaine folle d'activités sur les fées et licornes.
+               Pour toute question par rapport aux activités, au formulaire ou autre contactez le comité d'intégration à l'adresse suivante: <a href="mailto:info@integrationgelgif.com">info@integrationgelgif.com</a>
+            </div>
             <div class="mdl-card__supporting-text mdl-color-text--grey-600">
               <form id="inscription-form" action="#">
                 <i class="material-icons">assignment_ind</i>
@@ -103,6 +116,15 @@
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" type="text" id="new-last-name">
                   <label class="mdl-textfield__label" for="new-last-name">Nom...</label>
+                </div>
+                <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                    <select class="mdl-select__input" id="new-gender">
+                      <option value=""></option>
+                      <option value="masculin">Masculin</option>
+                      <option value="feminin">Feminin</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                   <label class="mdl-select__label" for="new-tshirt-size">Genre</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" type="email" id="new-email">
@@ -118,6 +140,8 @@
                   <textarea class="mdl-textfield__input" rows="1" id="new-allergies"></textarea>
                   <label class="mdl-textfield__label" for="new-allergies">Allergies alimentaires...</label>
                 </div>
+                <i class="material-icons">face</i>
+                <br>
                 <div class="mdl-select mdl-js-select mdl-select--floating-label">
                     <select class="mdl-select__input" id="new-tshirt-size">
                       <option value=""></option>
@@ -141,6 +165,27 @@
                    <label class="mdl-select__label" for="new-prog">Programme d'étude...</label>
                 </div>
                 <br>
+                <i class="material-icons">account_balance</i>
+                <br>
+                <p>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-souper">
+                    <input type="checkbox" id="checkbox-souper" class="mdl-checkbox__input" checked>
+                    <span class="mdl-checkbox__label">J'ai l'intention de participer au souper «GEL-GIF sort au Calao» qui est un souper reconnu mondialement par l'IEEE</span>
+                </label>
+                </p>
+                <p>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-photo">
+                    <input type="checkbox" id="checkbox-photo" class="mdl-checkbox__input" checked>
+                    <span class="mdl-checkbox__label">J'autorise qu'on me prenne en photo lors des activités de cette semaine extraordinaire</span>
+                </label>
+                </p>
+                <p>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-conduite">
+                    <input type="checkbox" id="checkbox-conduite" class="mdl-checkbox__input" checked disabled>
+                    <a href="code_conduite.html" target="_blank"><span class="mdl-checkbox__label">J'ai lu et j'accepte le code de conduite</span></a>
+                </label>
+                </p>
+                <br>
                 <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                   M'inscrire
                 </button>
@@ -152,6 +197,37 @@
 
     <!-- Show the info -->
     <section class="mdl-grid content" id="section-Info">
+      <div class="mdl-cell mdl-cell--12-col mdl-grid">
+        <!-- Card containing the info -->
+        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+            <div class="mdl-card__title mdl-color--pink-A200 mdl-color-text--white">
+              <h2 class="mdl-card__title-text">Informations importantes</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600 text-justifie">
+              <p>Pour les barbares parmi vous qui ne lisent pas les missives royales, lisez ce texte en entier quand même. Néanmoins, voici un bon résumé de ce qu'il vous faut savoir sur les activités d'intégration :</p>
+              <ul>
+              	<li>Elles se dérouleront sur l'ensemble de la première semaine de cours, soit entre le 5 et le 8 septembre 2017.</li>
+              	<li>Une contribution de votre part de 50$ est demandée afin de participer à toutes les activités de la semaine. Vous en aurez plus que pour votre argent.</li>
+              	<li>Soyez assuré que vous avez le droit de refuser tout ce qui vous semble inacceptable, l'objectif n'étant pas de rabaisser personne, mais bien d'apprendre à se connaître et à connaître votre environnement pour les quatre prochaines années.</li>
+              	<li>Veuillez confirmer votre présence à ces merveilleuses activités en remplissant le formulaire ci-joint.</li>
+              </ul>
+              <p>N'hésitez pas à nous contacter si vous avez des questions!</p>
+            </div>
+        </div>
+        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+            <div class="mdl-card__title mdl-color--pink-A200 mdl-color-text--white">
+              <h2 class="mdl-card__title-text">Introduction au thème</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600 text-justifie">
+              <p>La Source, nous la protégeons depuis la nuit des temps, aussi loin que l'on puisse se rappeler. Cela remonte au temps où nous n'étions encore que des centaures, vivant au rythme d'une prophétie à laquelle on ne croyait presque plus. Ainsi, comme à chaque 10 ans, nos ancêtres prirent leur bain de lune dans le grand lac des Amplifiés, au pied de l'arc-en-ciel, souhaitant plus que jamais voir leur destin changer. Puis, l'impossible arriva. Un coup de foudre incroyable frappa le lac en son centre, expulsant les centaures, qui devinrent licornes et fées, et laissant un profond cratère, où se trouvait la Source.</p>
+              <p>C'est ainsi que nous a été conféré ce savoir ancien et que nous sommes devenus les maîtres de ce que d'autres appellent "magie".  À ce jour, beaucoup de tribus rivales ont tenté de s'emparer de la Source, mais nous résistons. Cette année, la tension est plus forte que jamais, la guerre approche, et elle sera féroce, nous devons être prêts. Les tribus se sont données rendez-vous sur le Grand Axe de l'Université Laval, où toutes les guerres des temps modernes ont eu lieu.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Show the horaire -->
+    <section class="mdl-grid content" id="section-horaire">
       <div class="mdl-cell mdl-cell--12-col mdl-grid">
 
         <!-- Card containing the info -->
@@ -186,18 +262,57 @@
       </div>
     </section>
 
+<!-- Show the horaire -->
+    <section class="mdl-grid content" id="section-costume">
+      <div class="mdl-cell mdl-cell--12-col mdl-grid">
+
+        <!-- Card containing the info -->
+        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+            <div class="mdl-card__title mdl-color--pink-A200 mdl-color-text--white">
+              <h2 class="mdl-card__title-text">Génie électrique : Licorne magique</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600 text-justifie">
+              <p><strong>Tête :</strong> Les licornes sont des êtres féériques majestueux. Pour débuter votre costume, à l’aide d’un crayon à maquillage, vous vous dessinerez deux pommettes rouges sur les joues.</p>
+              <p><strong>Crinière :</strong> Votre crinière sera faite de plusieurs bouts de ficelle blanche de longueur équivalents (en cm) à la moitié de la température maximale recommandée d’utilisation du LM358N de Texas Instruments.
+              	<br>
+              La crinière sera fixée sur un chapeau qui sera le plus créatif possible (laissez aller votre imagination).</p>
+              <p><strong>Corne :</strong> Sur votre chapeau, vous devrez fixer une corne de longueur équivalente à la longueur de votre visage du menton à la racine de vos cheveux (à 1,5 cm) en styromousse ou tout autre matériau équivalent. La corne doit être un prototype d'inductance avec un 20 tours de fil (ce dernier sera de votre choix; on rappelle que c'est un prototype et non une vraie inductance). De plus, celle-ci devra être recouverte de brillants argentés.</p>
+              <p><strong>Torse :</strong> Vous devrez porter un T-shirt de la couleur de votre équipe (flash de préférence) et y dessiner à l’avant une porte logique NON-OU.</p>
+              <p><strong>Jambes :</strong> Pour vos jambes, vous porterez des collants de couleur rgb(255, 255, 255).</p>
+              <p><strong>Pieds :</strong> Comme vos chaussures risque d’être inutilisables à la fin de cette journée, vous mettrez dans vos pieds des sandales à lesquelles vous ne tenez pas.</p>
+              <p><strong>Marques du clan :</strong> Sur votre bras droit, vous dessinerez en rose un ampli-op.</p>
+            </div>
+        </div>
+        <!-- Card containing the info -->
+        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+            <div class="mdl-card__title mdl-color--pink-A200 mdl-color-text--white">
+              <h2 class="mdl-card__title-text">Génie informatique : Fée majestueuse</h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600 text-justifie">
+              <p><strong>Tête :</strong> À l’aide de vos doigts de fée, vous vous confectionnerai une décoration florale qui entourera votre encéphale. Dans vos cheveux reposeront des milliers de brillants de la couleur de votre choix. Vous dessinerez aussi une étoile étincelante sur votre joue gauche.</p>
+              <p><strong>Torse :</strong> Vous porterez un chandail ou une camisole de la couleur de votre équipe (Flash de préférence) et vous devrez y dessiner une porte logique ET à l’avant.</p>
+              <p><strong>Ailes :</strong> À l’aide de cintres et de votre tissu préféré, vous devrez confectionner vos ailes magiques. Celles-ci devront avoir une hauteur de 0x28 cm et une largeur de 0x19 cm.  Un bonus sera accordé si celle-ci brillent en plus.</p>
+              <p><strong>Jambes :</strong> Les jambes devront être vêtues de bas de nylon ainsi que d’une jupe de couleur correspondant au multiplicateur 1M de la charte des résistances. <br>Important : Le bas de la jupe devra former une onde sinusoïdale avec une amplitude de 10 cm et une fréquence de 5 Hz. (1 seconde = 1 mètre)</p>
+              <p><strong>Pieds :</strong> Vous serez munis d’une belle paire de gougounes à laquelle vous ne tenez pas.</p>
+              <p><strong>Arme :</strong> Vous devrez vous équiper d’une baguette magique. Soyez originaux, mais assurez-vous que cette dernière ne soit pas dangereuse.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Show the confirmation -->
     <section class="mdl-grid content" id="section-Confirmation" style="display:none">
       <div class="mdl-cell mdl-cell--12-col mdl-grid">
 
         <!-- Card containing the info -->
         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop" id="container-confirmation">
-            <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white" id="container-confirmation-color">
+            <div class="mdl-card__title mdl-color--pink-A200 mdl-color-text--white" id="container-confirmation-color">
               <h2 class="mdl-card__title-text">Confirmation</h2>
             </div>
             <div class="mdl-card__supporting-text mdl-color-text--grey-600">
               <h4>Votre inscription a été enregistrée!</h4>
               Vous recevrez un courriel de confirmation à l'adresse email: <p id="email-confirmation"></p>
+              <p>Si vous ne pouvez participer à certaines activités pour des raisons spécifiques, contactez-nous par email: <a href="mailto:info@integrationgelgif.com">info@integrationgelgif.com</a></p>
             </div>
         </div>
 

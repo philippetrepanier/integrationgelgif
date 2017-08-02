@@ -18,11 +18,15 @@
 // Shortcuts to FORM Elements.
 var firstNameInput = document.getElementById('new-first-name');
 var lastNameInput = document.getElementById('new-last-name');
+var genderInput = document.getElementById('new-gender');
 var emailInput = document.getElementById('new-email');
 var pizzaQtyInput = document.getElementById('new-pizza-qty');
 var allergiesInput = document.getElementById('new-allergies');
 var tshirtSizeInput = document.getElementById('new-tshirt-size');
 var progInput = document.getElementById('new-prog');
+var souperInput = document.getElementById('checkbox-souper');
+var photoInput = document.getElementById('checkbox-photo');
+
 
 // Shortcuts to DOM Elements.
 var inscriptionForm = document.getElementById('inscription-form');
@@ -45,17 +49,20 @@ var listeningFirebaseRefs = [];
  * Saves a new registration to the Firebase DB.
  */
 // [START write_fan_out]
-function writeNewInscription(uid, firstname, lastname, email, pizzaQty, allergies, tshirtSize, programme) {
+function writeNewInscription(uid, firstname, lastname, gender, email, pizzaQty, allergies, tshirtSize, programme, souper, photo) {
   // A registration entry.
   var postData = {
     uid: uid,
     firstname: firstname,
     lastname: lastname,
+    gender: gender,
     email: email,
     pizzaQty: pizzaQty,
     allergies: allergies,
     tshirtSize: tshirtSize,
     programme: programme,
+    souper: souper,
+    photo: photo,
     equipe: null
   };
 
@@ -237,8 +244,8 @@ function onAuthStateChanged(user) {
 /**
  * Creates a new registration for the current user.
  */
-function newInscriptionForCurrentUser(firstname, lastname, email, pizzaQty, allergies, tshirtSize, programme) {
-  return writeNewInscription(firebase.auth().currentUser.uid, firstname, lastname, email, pizzaQty, allergies, tshirtSize, programme);
+function newInscriptionForCurrentUser(firstname, lastname, gender, email, pizzaQty, allergies, tshirtSize, programme, souper, photo) {
+  return writeNewInscription(firebase.auth().currentUser.uid, firstname, lastname, gender, email, pizzaQty, allergies, tshirtSize, programme, souper, photo);
     // [END_EXCLUDE]
   // [END single_value_read]
 }
@@ -291,29 +298,32 @@ inscriptionForm.onsubmit = function(e) {
   e.preventDefault();
   var firstname = firstNameInput.value;
   var lastname = lastNameInput.value;
+  var gender = genderInput.value;
   var email = emailInput.value;
   var pizzaQty = pizzaQtyInput.value;
   var allergies = allergiesInput.value;
   var tshirtSize = tshirtSizeInput.value;
   var programme = progInput.value;
+  var souper = souperInput.checked;
+  var photo = photoInput.checked;
 
   if (allergies == "") {
-    allergies = "none";
+    allergies = "aucune";
   }
   
-  if (firstname && lastname && email && pizzaQty && allergies && tshirtSize && programme) {
-    newInscriptionForCurrentUser(firstname, lastname, email, pizzaQty, allergies, tshirtSize, programme).then(function() {
+  if (firstname && lastname && gender && email && pizzaQty && allergies && tshirtSize && programme) {
+    newInscriptionForCurrentUser(firstname, lastname, gender, email, pizzaQty, allergies, tshirtSize, programme, souper, photo).then(function() {
       // REDIRIGER VERS LA PAGE DE CONFIRMATION ET LA COULEUR
       showSection(sectionConfirmation);
-      changeColor('mdl-color--light-blue-600', navBar, 'mdl-color--deep-purple-500');
-      changeColor('mdl-color--light-blue-700', headerBar, 'mdl-color--deep-purple-600');
-      changeColor('mdl-color--light-blue-600', containerConfirmationColor, 'mdl-color--deep-purple-500');
       emailConfirmation.innerHTML = emailInput.value;
       alert("Envoyé avec succès");
     });
     //messageInput.value = '';
     // clean up the form ou juste la masquer
+  } else{
+    alert('Veuillez compléter tous les champs');
   }
+
 };
 
 // Bind menu buttons.

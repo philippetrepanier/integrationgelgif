@@ -50,7 +50,7 @@ exports.countRegistrations = functions.database.ref('/inscriptions/{inscriptioni
 
         console.log('Assign team');
         return event.data.ref.parent.parent.child('/equipes/' + nomEquipe + '/' + user.uid).set(user);
-        console.log('Assignment compleated !!');
+        console.log('Assignment completed !!');
     }); 
   });
 });
@@ -134,15 +134,14 @@ const mailTransport = nodemailer.createTransport(
     `smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
 
 // Sends a confirmation email to the given user.
-function sendConfirmationEmail(email) {
+function sendConfirmationGmail(email, allergies, firstname, pizzaQty, programme, tshirtSize, equipe) {
 const mailOptions = {
     from: `Intégration GEL-GIF <info@integrationgelgif.com>`,
     to: email
   };
 
-  // The user subscribed to the newsletter.
-  mailOptions.subject = "Confirmation de l'inscription!";
-  mailOptions.text = `Bonjour ! Ceci est une confirmation de l'inscription. \n Voici les informations fournies: \n 1 \n Pour toute question écrivez nours! À bientôt \n Le comité de l'intégration`;
+  mailOptions.subject = `Équipe ${equipe} - Confirmation de l'inscription!`;
+  mailOptions.text = `Bonjour ${firstname}!\n\nCeci est une confirmation de ton inscription. \n\nVoici les informations fournies: \n    Allergies: ${allergies} \n    Pointes de pizza: ${pizzaQty} \n    Programme: ${programme} \n    Taille du t-shirt: ${tshirtSize}\n\nTu es dans l'équipe ${equipe} donc tu dois utiliser cette couleur dans ton costume\n\nPour toute question, écrivez-nous! À bientôt \nLe comité de l'intégration`;
   return mailTransport.sendMail(mailOptions).then(() => {
     console.log('New welcome email sent to:', email);
   });
@@ -153,18 +152,64 @@ function handleError (err) {
   throw new Error(err.ErrorMessage);
 };
 
-exports.bigben = functions.https.onRequest((req, res) => {
-  const hours = (new Date().getHours() % 12) - 6 // UTC - 6hr;
-  res.status(200).send(`<!doctype html>
-    <head>
-      <title>Time</title>
-    </head>
-    <body>
-      ${'BONG '.repeat(hours)}
-    </body>
-  </html>`);
+exports.sendConfirmationEmailDEV = functions.https.onRequest((req, res) => {
+    return sendConfirmationGmail("philippe.trepanier.2@ulaval.ca");
 });
 
-exports.sendConfirmationEmail = functions.https.onRequest((req, res) => {
-    return sendConfirmationEmail("philippe.trepanier.2@ulaval.ca");
+
+//Confirmation equipe 0
+exports.sendConfirmationEmailPROD = functions.database.ref('/equipes/equipe0/{inscriptionid}').onWrite(event => {
+    const user = event.data.val();
+
+    var email = user.email;
+    var allergies = user.allergies;
+    var firstname = user.firstname;
+    var pizzaQty = user.pizzaQty;
+    var programme = user.programme;
+    var tshirtSize = user.tshirtSize;
+    var equipe = "mauve";
+
+    return sendConfirmationGmail(email, allergies, firstname, pizzaQty, programme, tshirtSize, equipe);
+});
+
+exports.sendConfirmationEmailPROD1 = functions.database.ref('/equipes/equipe1/{inscriptionid}').onWrite(event => {
+    const user = event.data.val();
+
+    var email = user.email;
+    var allergies = user.allergies;
+    var firstname = user.firstname;
+    var pizzaQty = user.pizzaQty;
+    var programme = user.programme;
+    var tshirtSize = user.tshirtSize;
+    var equipe = "rose";
+
+    return sendConfirmationGmail(email, allergies, firstname, pizzaQty, programme, tshirtSize, equipe);
+});
+
+exports.sendConfirmationEmailPROD2 = functions.database.ref('/equipes/equipe2/{inscriptionid}').onWrite(event => {
+    const user = event.data.val();
+
+    var email = user.email;
+    var allergies = user.allergies;
+    var firstname = user.firstname;
+    var pizzaQty = user.pizzaQty;
+    var programme = user.programme;
+    var tshirtSize = user.tshirtSize;
+    var equipe = "bleu poudre";
+
+    return sendConfirmationGmail(email, allergies, firstname, pizzaQty, programme, tshirtSize, equipe);
+});
+
+exports.sendConfirmationEmailPROD3 = functions.database.ref('/equipes/equipe3/{inscriptionid}').onWrite(event => {
+    const user = event.data.val();
+
+    var email = user.email;
+    var allergies = user.allergies;
+    var firstname = user.firstname;
+    var pizzaQty = user.pizzaQty;
+    var programme = user.programme;
+    var tshirtSize = user.tshirtSize;
+    var equipe = "vert pastel";
+
+    return sendConfirmationGmail(email, allergies, firstname, pizzaQty, programme, tshirtSize, equipe);
 });
