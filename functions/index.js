@@ -141,7 +141,7 @@ const mailOptions = {
   };
 
   mailOptions.subject = `Équipe ${equipe} - Confirmation de l'inscription!`;
-  mailOptions.text = `Bonjour ${firstname}!\n\nCeci est une confirmation de ton inscription. \n\nVoici les informations fournies: \n    Allergies: ${allergies} \n    Pointes de pizza: ${pizzaQty} \n    Programme: ${programme} \n    Taille du t-shirt: ${tshirtSize}\n\nTu es dans l'équipe ${equipe} donc tu dois utiliser cette couleur dans ton costume\n\nPour toute question, écrivez-nous! À bientôt \nLe comité de l'intégration`;
+  mailOptions.text = `Bonjour ${firstname}!\n\nCeci est une confirmation de ton inscription. \n\nVoici les informations fournies: \n    Allergies: ${allergies} \n    Pointes de pizza: ${pizzaQty} \n    Programme: ${programme} \n    Taille du t-shirt: ${tshirtSize}\n\nTu es dans l'équipe ${equipe} donc tu dois utiliser cette couleur dans ton costume\n\nPour toute question, n'hésite pas à nous contacter! À bientôt \nLe comité de l'intégration`;
   return mailTransport.sendMail(mailOptions).then(() => {
     console.log('New welcome email sent to:', email);
   });

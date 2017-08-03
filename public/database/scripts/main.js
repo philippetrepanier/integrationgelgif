@@ -42,7 +42,6 @@ var menuInfoButton = document.getElementById('menu-info');
 var menuIntroButton = document.getElementById('menu-intro');
 var navBar = document.getElementById('nav-bar');
 var headerBar = document.getElementById('header-bar');
-var containerConfirmationColor = document.getElementById('container-confirmation-color');
 var emailConfirmation = document.getElementById('email-confirmation');
 
 var listeningFirebaseRefs = [];
@@ -260,7 +259,7 @@ function showSection(sectionElement, buttonElement) {
   sectionInfo.style.display = 'none';
   sectionIntro.style.display = 'none';
   addInscription.style.display = 'none';
-  sectionConfirmation.style.display = 'none';
+  
 
   myInscriptionButton.classList.remove('is-active');
   menuInfoButton.classList.remove('is-active');
