@@ -70,12 +70,36 @@ exports.statsInscriptions = functions.https.onRequest((req, res) => {
       var user_equipe2 = "";
       var user_equipe3 = "";
       var user_list = "";
+      var email_list = "";
+
+      var small = 0;
+      var medium = 0;
+      var large = 0;
+      var x_large = 0;
 
       usersSnap.forEach(function(childSnapshots){
         var prenom = childSnapshots.val().firstname;
         var nom = childSnapshots.val().lastname;
 
         user_list += prenom + ' ' + nom + '<br>';
+      });
+
+      usersSnap.forEach(function(childSnapshots) {
+         email_list += childSnapshots.val().email + ' <br> ';
+      });
+
+      usersSnap.forEach(function(childSnapshots) {
+        var tmp_size = childSnapshots.val().tshirtSize;
+
+        if (tmp_size == "small" ) {
+            small += 1;
+        } else if (tmp_size == "medium") {
+            medium +=1;
+        } else if (tmp_size == "large") {
+            large +=1;
+        } else if (tmp_size == "x-large") {
+            x_large +=1;
+        }
       });
 
       equipe0.forEach(function(childSnapshots){
@@ -115,6 +139,14 @@ exports.statsInscriptions = functions.https.onRequest((req, res) => {
             <h1>Statistiques des inscriptions</h1>
             <h2>Total de ${nbInscriptions} inscriptions </h2>
             ${user_list}
+            <h2>Emails </h2>
+            ${email_list}
+            <h2>T-Shirt</h2>
+            <h3>Small : ${small}</h3>
+            <h3>Medium : ${medium}</h3>
+            <h3>Large : ${large}</h3>
+            <h3>X-Large : ${x_large}</h3>
+
             <h2>Membres de l'equipe 0</h2>
             ${user_equipe0}
             <h2>Membres de l'equipe 1</h2>
