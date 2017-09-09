@@ -299,7 +299,7 @@ window.addEventListener('load', function() {
   firebase.auth().onAuthStateChanged(onAuthStateChanged);
 
   // Saves message on form submit.
-inscriptionForm.onsubmit = function(e) {
+/*inscriptionForm.onsubmit = function(e) {
   e.preventDefault();
   var firstname = firstNameInput.value;
   var lastname = lastNameInput.value;
@@ -329,7 +329,7 @@ inscriptionForm.onsubmit = function(e) {
     alert('Veuillez compléter tous les champs');
   }
 
-};
+};*/
 
 // Bind menu buttons.
 menuIntroButton.onclick = function() {

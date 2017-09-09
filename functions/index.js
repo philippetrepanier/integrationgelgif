@@ -71,6 +71,8 @@ exports.statsInscriptions = functions.https.onRequest((req, res) => {
       var user_equipe3 = "";
       var user_list = "";
       var email_list = "";
+      var pizza = 0;
+      var souper = 0;
 
       var small = 0;
       var medium = 0;
@@ -80,8 +82,13 @@ exports.statsInscriptions = functions.https.onRequest((req, res) => {
       usersSnap.forEach(function(childSnapshots){
         var prenom = childSnapshots.val().firstname;
         var nom = childSnapshots.val().lastname;
+        var allergies = childSnapshots.val().allergies;
+        pizza += Number(childSnapshots.val().pizzaQty);
+        if (childSnapshots.val().souper == true) {
+            souper += 1;
+        }
 
-        user_list += prenom + ' ' + nom + '<br>';
+        user_list += prenom + ' ' + nom + ' ' + allergies + '<br>';
       });
 
       usersSnap.forEach(function(childSnapshots) {
@@ -139,13 +146,21 @@ exports.statsInscriptions = functions.https.onRequest((req, res) => {
             <h1>Statistiques des inscriptions</h1>
             <h2>Total de ${nbInscriptions} inscriptions </h2>
             ${user_list}
+
             <h2>Emails </h2>
             ${email_list}
+
             <h2>T-Shirt</h2>
             <h3>Small : ${small}</h3>
             <h3>Medium : ${medium}</h3>
             <h3>Large : ${large}</h3>
             <h3>X-Large : ${x_large}</h3>
+
+            <h2>PIZZA</h2>
+            <h3>Pointes de pizza : ${pizza}</h3>
+
+            <h2>SOUPER</h2>
+            <h3>Personnes ayant un intérêt pour le souper : ${souper}</h3>
 
             <h2>Membres de l'equipe 0</h2>
             ${user_equipe0}
